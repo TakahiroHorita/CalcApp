@@ -3,6 +3,7 @@ package jp.techacademy.takahiro.horita.calcapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,25 +37,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        float float1 = Float.parseFloat(mEditText1.getText().toString());
-        float float2 = Float.parseFloat(mEditText2.getText().toString());
-        float answer = 0;
 
-        if (v.getId() == R.id.button1) {
-            answer = float1 + float2;
+        if(mEditText1.getText().toString().equals("") == false && mEditText2.getText().toString().equals("") == false) {
 
-        } else if (v.getId() == R.id.button2) {
-            answer = float1 - float2;
+            float float1 = Float.parseFloat(mEditText1.getText().toString());
+            float float2 = Float.parseFloat(mEditText2.getText().toString());
+            float answer = 0;
 
-        } else if (v.getId() == R.id.button3) {
-            answer = float1 * float2;
+            if (v.getId() == R.id.button1) {
+                answer = float1 + float2;
 
-        } else if (v.getId() == R.id.button4) {
-            answer = float1 / float2;
+            } else if (v.getId() == R.id.button2) {
+                answer = float1 - float2;
+
+            } else if (v.getId() == R.id.button3) {
+                answer = float1 * float2;
+
+            } else if (v.getId() == R.id.button4) {
+                answer = float1 / float2;
+
+            }
+
+            Intent intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("VALUE1", answer);
+            startActivity(intent);
         }
-
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("VALUE1", answer);
-        startActivity(intent);
     }
 }
