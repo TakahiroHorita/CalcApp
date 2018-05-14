@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText mEditText1;
@@ -38,23 +41,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(mEditText1.getText().toString().equals("") == false && mEditText2.getText().toString().equals("") == false) {
+        if((!mEditText1.getText().toString().equals("")  && !mEditText2.getText().toString().equals("")) && !(v.getId() == R.id.button4 && Double.parseDouble(mEditText2.getText().toString()) == 0)) {
 
-            float float1 = Float.parseFloat(mEditText1.getText().toString());
-            float float2 = Float.parseFloat(mEditText2.getText().toString());
-            float answer = 0;
+            double double1 = Double.parseDouble(mEditText1.getText().toString());
+            double double2 = Double.parseDouble(mEditText2.getText().toString());
+            double answer = 0;
 
             if (v.getId() == R.id.button1) {
-                answer = float1 + float2;
+                answer = double1 + double2;
 
             } else if (v.getId() == R.id.button2) {
-                answer = float1 - float2;
+                answer = double1 - double2;
 
             } else if (v.getId() == R.id.button3) {
-                answer = float1 * float2;
+                answer = double1 * double2;
 
             } else if (v.getId() == R.id.button4) {
-                answer = float1 / float2;
+                answer = double1 / double2;
 
             }
 
